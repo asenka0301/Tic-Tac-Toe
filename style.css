@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&family=Roboto:wght@400;700&display=swap');
+
+
+:root {
+    --background-color: #ECEFF4; 
+    --main-color: #1E3250;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+    background: var(--background-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto';
+    color: var(--main-color);
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2em;
+    position: absolute;
+    
+  }
+
+ 
+ .btn {
+    margin-top: 40px;
+    font-size: 0.7em;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: #04AA6D;
+    color:white;
+    border: none;
+    border-radius: 5px ;
+    -webkit-border-radius: 5px ;
+    -moz-border-radius: 5px ;
+    -ms-border-radius: 5px ;
+    -o-border-radius: 5px ;
+}
+
+
+
+@keyframes menu {
+    from {
+        top: 40%;
+    }
+    to {
+        top: 5%;
+    }
+}
+
+.controls {
+    display: flex;
+    width: 320px;
+    justify-content: space-around;
+    align-items: center;
+    opacity: 0;
+    /* display: none; */
+
+ 
+}
+
+.btn-computer {
+    width: 120px;
+    font-size: 0.5em;
+
+}
+
+.btn-player {
+    width: 120px;
+    font-size: 0.5em;
+
+}
+
+.dashboard {
+    display: none;
+   
+
+}
+
+.dashboard-visible {
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100vh;
+
+}
+
+
+.player_1, .player_2 {
+    font-size: 2em;
+}
+
+.grid {
+    display: grid;
+    width: 390px;
+    height: 390px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+} 
+
+.cell {
+    border: 2px solid var(--main-color);
+    font-size: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.cell:hover {
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    outline: none;
+
+}
