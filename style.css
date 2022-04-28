@@ -35,7 +35,7 @@ body {
 
  
  .btn {
-    margin-top: 40px;
+    margin-top: 50px;
     font-size: 0.7em;
     padding: 10px 15px;
     text-transform: uppercase;
@@ -43,12 +43,13 @@ body {
     background-color: #04AA6D;
     color:white;
     border: none;
-    border-radius: 5px ;
-    -webkit-border-radius: 5px ;
-    -moz-border-radius: 5px ;
-    -ms-border-radius: 5px ;
-    -o-border-radius: 5px ;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
+
 
 
 
@@ -57,37 +58,34 @@ body {
         top: 40%;
     }
     to {
-        top: 5%;
+        top: 10%;
     }
 }
 
 .controls {
-    display: flex;
-    width: 320px;
+    width: 400px;
     justify-content: space-around;
     align-items: center;
     opacity: 0;
-    /* display: none; */
-
- 
 }
 
 .btn-computer {
-    width: 120px;
-    font-size: 0.5em;
-
+    width: 150px;
+    font-size: 0.6em;
 }
 
 .btn-player {
-    width: 120px;
-    font-size: 0.5em;
+    width: 150px;
+    font-size: 0.6em;
+}
 
+.btn-computer:hover,
+.btn-player:hover {
+    box-shadow: 0 0 6px 3px #c1c7ce;
 }
 
 .dashboard {
     display: none;
-   
-
 }
 
 .dashboard-visible {
@@ -99,6 +97,13 @@ body {
 
 }
 
+.twoPlayer {
+    display: none;
+}
+
+.onePlayer {
+    display: none;
+}
 
 .player_1, .player_2 {
     font-size: 2em;
@@ -110,7 +115,6 @@ body {
     height: 390px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-
 } 
 
 .cell {
@@ -121,6 +125,7 @@ body {
     align-items: center;
 
 }
+
 .cell:hover {
     transform: scale(1.05);
     -webkit-transform: scale(1.05);
@@ -128,5 +133,4 @@ body {
     -ms-transform: scale(1.05);
     -o-transform: scale(1.05);
     outline: none;
-
 }
