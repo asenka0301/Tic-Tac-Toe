@@ -7,7 +7,7 @@ function StartGame(startBtn) {
 
    menu.style.position = 'absolute';
    menu.style.animation = 'menu 1.5s';
-   menu.style.top = '10%';
+   menu.style.top = '5%';
 
    startBtn.style.display = 'none';
 }
@@ -41,8 +41,8 @@ const Player = (sign) => {
       return sign;
    }
 
-   return {getSign};
-
+   return { getSign };
+ 
 }
 
 const gameBoard = (() => {
@@ -78,6 +78,18 @@ const gameBoard = (() => {
 })()
 
 const displayControll = ( () => {
+   const fields = document.getElementById('gird');
+   const player_1_score = document.querySelector('');
+   const player_2_score = document.querySelector('');
+   const result = document.querySelector('');
+
+
+   fields.forEach((field) => {
+      field.addEventListener('click', )
+   })
+   
+
+
    
 
 
@@ -89,13 +101,10 @@ const gameControll = (() => {
    const Player2 = Player('O');
    let round = 1;
    let gameIsOver = false;
-   const board = document.getElementById('gird');
-
-
 })()
 
 
-
+const board = document.getElementById('gird');
 
 
 
