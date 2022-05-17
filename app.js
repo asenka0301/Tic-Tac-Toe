@@ -53,41 +53,33 @@ const gameBoard = (() => {
       '', '', '',
    ];
    
-   function fillCell(cell, sign) {
-      const i = cell.dataset.cell; 
-      board[i] = sign;
-      cell.textContent = sign;
-      
-      console.log(board);
+   const fillCell = (sign, index) => {
+      board[index] = sign;
    }
 
-   function cleanBoard() {
-      // 
-   };
+   const getSign = (index) => {
+      return board[index];
+   }
 
-   function isCellEmpty(i) {
-      if (board[i].length == 0) {
-         return true;
+   const cleanCells = () => {
+      for(let i = 0; i < board.lengh; i++) {
+         board[i] = '';
       }
-      return false;
    };
 
-   return {
-      fillCell,
-   }
+   return { fillCell, getSign, cleanCells }
+
 })()
 
-const displayControll = ( () => {
+const displayController = ( () => {
    const fields = document.getElementById('gird');
-   const player_1_score = document.querySelector('');
-   const player_2_score = document.querySelector('');
-   const result = document.querySelector('');
+   const player_1_score = document.querySelector('.player_1_score');
+   const player_2_score = document.querySelector('.player_2_score');
+   const result = document.querySelector('.results');
+   const resetBtn = document.getElementById('resetBtn');
 
 
-   fields.forEach((field) => {
-      field.addEventListener('click', )
-   })
-   
+  
 
 
    
@@ -103,8 +95,6 @@ const gameControll = (() => {
    let gameIsOver = false;
 })()
 
-
-const board = document.getElementById('gird');
 
 
 
