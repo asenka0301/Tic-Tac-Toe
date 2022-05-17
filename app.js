@@ -87,13 +87,6 @@ const displayController = ( () => {
 
 })()
 
-const gameControll = (() => {
-
-   const Player1 = Player('X');
-   const Player2 = Player('O');
-   let round = 1;
-   let gameIsOver = false;
-})()
 
 
 
