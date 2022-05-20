@@ -53,7 +53,7 @@ const gameBoard = (() => {
       '', '', '',
    ];
    
-   const fillCell = (sign, index) => {
+   const fillCell = (index, sign) => {
       board[index] = sign;
    }
 
@@ -69,28 +69,55 @@ const gameBoard = (() => {
 
    return { fillCell, getSign, cleanCells }
 
-})()
+})();
 
 const displayController = ( () => {
-   const fields = document.getElementById('gird');
-   const player_1_score = document.querySelector('.player_1_score');
-   const player_2_score = document.querySelector('.player_2_score');
-   const result = document.querySelector('.results');
-   const resetBtn = document.getElementById('resetBtn');
+   const fields = document.querySelectorAll('.cell');
+   const message = document.getElementById('message');
+   const resetBtn = document.getElementById('btn-reset');
+
+   fields.forEach((field) => 
+      field.addEventListener('click', (e) => {
+         gameController.playRound(parseInt(e.target.dataset.cell));
+         updateGameBoard();
+      })
+   );
+
+   const updateGameBoard = () => {
+      for(let i = 0; i < fields.length; i++) {
+         fields[i].textContent = gameBoard.getSign(i);
+      }
+   };
+
+   const setMessage = (msg) => {
+      message.textContent = msg;
+   }
+
+   return { setMessage };
 
 
-  
+})();
 
+const gameController = ( () => {
+   const playerX = Player('X');
+   const playerO = Player('O');
+   let round = 1;
+   let GameIsOver = false;
 
-   
+   const playRound = (fieldSign) => {
+      gameBoard.fillCell(fieldSign, currentPlayerSign());
+      round++;
+      displayController.setMessage(`Player ${currentPlayerSign()}'s move`);
+   }
 
+   const currentPlayerSign = () => {
+      return round % 2 === 1 ? playerX.getSign() : playerO.getSign();  
+   }
 
-})()
+   return { playRound }
+})();
 
-
-
-
-
+const message = document.getElementById('message');
 
 
 
