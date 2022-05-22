@@ -78,6 +78,7 @@ const displayController = ( () => {
 
    fields.forEach((field) => 
       field.addEventListener('click', (e) => {
+         if(gameController.gameIsOver() || e.target.textContent !== '') return 
          gameController.playRound(parseInt(e.target.dataset.cell));
          updateGameBoard();
       })
@@ -102,22 +103,29 @@ const gameController = ( () => {
    const playerX = Player('X');
    const playerO = Player('O');
    let round = 1;
-   let GameIsOver = false;
+   let isOver = false;
 
    const playRound = (fieldSign) => {
       gameBoard.fillCell(fieldSign, currentPlayerSign());
+      if(round === 9) {
+         displayController.setMessage(`It's a tie`);
+         isOver = true;
+         return;
+      }
       round++;
       displayController.setMessage(`Player ${currentPlayerSign()}'s move`);
    }
-
+   
    const currentPlayerSign = () => {
       return round % 2 === 1 ? playerX.getSign() : playerO.getSign();  
    }
 
-   return { playRound }
-})();
+   const gameIsOver = () => {
+      return isOver;
+   }
 
-const message = document.getElementById('message');
+   return { playRound, gameIsOver }
+})();
 
 
 
