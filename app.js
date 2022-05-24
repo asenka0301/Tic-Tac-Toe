@@ -40,9 +40,7 @@ const Player = (sign) => {
    const getSign = () => {
       return sign;
    }
-
    return { getSign };
- 
 }
 
 const gameBoard = (() => {
@@ -62,19 +60,17 @@ const gameBoard = (() => {
    }
 
    const cleanCells = () => {
-      for(let i = 0; i < board.lengh; i++) {
+      for(let i = 0; i < board.length; i++) {
          board[i] = '';
       }
    };
-
    return { fillCell, getSign, cleanCells }
-
 })();
 
 const displayController = ( () => {
    const fields = document.querySelectorAll('.cell');
    const message = document.getElementById('message');
-   const resetBtn = document.getElementById('btn-reset');
+   const resetBtn = document.querySelector('.btn-reset');
 
    fields.forEach((field) => 
       field.addEventListener('click', (e) => {
@@ -94,9 +90,13 @@ const displayController = ( () => {
       message.textContent = msg;
    }
 
+   resetBtn.addEventListener('click', () => {
+      gameBoard.cleanCells();
+      gameController.newGame();
+      updateGameBoard();
+      setMessage('Player X\'s move');
+   });
    return { setMessage };
-
-
 })();
 
 const gameController = ( () => {
@@ -124,7 +124,11 @@ const gameController = ( () => {
       return isOver;
    }
 
-   return { playRound, gameIsOver }
+   const newGame = () => {
+      isOver = false;
+      round = 1;
+   }
+   return { playRound, gameIsOver, newGame}
 })();
 
 
