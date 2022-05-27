@@ -106,12 +106,21 @@ const gameController = ( () => {
    let isOver = false;
 
    const playRound = (fieldSign) => {
+
       gameBoard.fillCell(fieldSign, currentPlayerSign());
+      
+      if(checkWinner(fieldSign)) {
+         displayController.setMessage(`${currentPlayerSign()} win`);
+         isOver = true;
+         return;
+      }
+      
       if(round === 9) {
          displayController.setMessage(`It's a tie`);
          isOver = true;
          return;
       }
+
       round++;
       displayController.setMessage(`Player ${currentPlayerSign()}'s move`);
    }
@@ -131,6 +140,34 @@ const gameController = ( () => {
    return { playRound, gameIsOver, newGame}
 })();
 
+
+const checkWinner = (fieldIndex) => {
+   
+   const combinations = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6] 
+   ];
+
+   for(let i = 0; i < combinations.length; i++) {
+
+      let counter = 0;
+
+      for(let j = 0; j < combinations[i].length; j++) {
+        if(gameBoard.getSign(combinations[i][j]) === gameBoard.getSign(fieldIndex)) {
+          counter++;
+        }
+      }
+      if(counter === 3) {
+         return true;
+      }
+    }
+}
 
 
 
